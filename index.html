@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My website</title>
-    <link rel="stylesheet"href="style.css">
-  </head>
-  <body>
-    <h1>welcome</h1>
-    <p>ye website sab use kar sakte hai </p>
-    <button onclick="sayHi()">click me</button>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <title>Simple User System</title>
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+    }
+
+    button {
+      background: cyan;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Signup</h2>
+  <input type="text" id="suUser" placeholder="Username"><br>
+  <input type="password" id="suPass" placeholder="Password"><br>
+  <button onclick="signup()">Signup</button>
+
+  <h2>Login</h2>
+  <input type="text" id="liUser" placeholder="Username"><br>
+  <input type="password" id="liPass" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
+
+  <h3 id="msg"></h3>
+
+  <script>
+    function signup() {
+      let user = document.getElementById("suUser").value;
+      let pass = document.getElementById("suPass").value;
+
+      if (user === "" || pass === "") {
+        document.getElementById("msg").innerText = "All fields required!";
+        return;
+      }
+
+      localStorage.setItem("username", user);
+      localStorage.setItem("password", pass);
+
+      document.getElementById("msg").innerText = "Signup successful ✅";
+    }
+
+    function login() {
+      let user = document.getElementById("liUser").value;
+      let pass = document.getElementById("liPass").value;
+
+      let savedUser = localStorage.getItem("username");
+      let savedPass = localStorage.getItem("password");
+
+      if (user === savedUser && pass === savedPass) {
+        document.getElementById("msg").innerText = "Login successful 🎉";
+      } else {
+        document.getElementById("msg").innerText = "Wrong username or password ❌";
+      }
+    }
+  </script>
+
+</body>
 </html>
