@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dashboard {
+      background: white;
+      width: 90%;
+      max-width: 450px;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 5px;
+    }
+
+    .username {
+      color: #c33764;
+      font-weight: bold;
+    }
+
+    .card {
+      background: #f4f4f4;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #c33764;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #a82b55;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard">
+    <h1>Welcome 👋</h1>
+    <p>Hello, <span class="username" id="user"></span></p>
+    <p id="date"></p>
+
+    <div class="card">
+      <h3>👤 Profile</h3>
+      <p><b>Username:</b> <span id="profileUser"></span></p>
+      <p><b>Status:</b> Active</p>
+      <p><b>Role:</b> Student</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 Info</h3>
+      <p>Login: Successful</p>
+      <p>Account Type: Free</p>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // l
