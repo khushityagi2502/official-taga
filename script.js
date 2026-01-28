@@ -44,3 +44,45 @@ function login() {
     window.location.href = "dashboard.html";
   }, 1000);
 }
+// Time-based greeting
+function showGreeting() {
+    const greeting = document.getElementById("greeting");
+    const now = new Date();
+    const hour = now.getHours();
+
+    if(hour >= 5 && hour < 12){
+        greeting.textContent = "Good Morning! ☀️";
+    } else if(hour >= 12 && hour < 17){
+        greeting.textContent = "Good Afternoon! 🌤️";
+    } else if(hour >= 17 && hour < 21){
+        greeting.textContent = "Good Evening! 🌇";
+    } else {
+        greeting.textContent = "Good Night! 🌙";
+    }
+}
+
+// Mood selector
+const moodSelector = document.getElementById("mood");
+
+moodSelector.addEventListener("change", function() {
+    const mood = this.value;
+    if(mood === "happy"){
+        document.body.style.backgroundColor = "#fffb8f";
+        document.body.style.color = "#333";
+    } else if(mood === "sad"){
+        document.body.style.backgroundColor = "#a0c4ff";
+        document.body.style.color = "#fff";
+    } else if(mood === "angry"){
+        document.body.style.backgroundColor = "#ff6b6b";
+        document.body.style.color = "#fff";
+    } else if(mood === "relaxed"){
+        document.body.style.backgroundColor = "#caffbf";
+        document.body.style.color = "#333";
+    } else {
+        document.body.style.backgroundColor = "#fff";
+        document.body.style.color = "#000";
+    }
+});
+
+// Run greeting on page load
+showGreeting();
