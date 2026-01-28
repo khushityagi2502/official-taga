@@ -44,4 +44,44 @@
 </div>
 
 <button onclick="logout()">Logout</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        #greeting {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="greeting">Hello!</div>
+
+    <label for="mood">Select Your Mood: </label>
+    <select id="mood">
+        <option value="">--Choose Mood--</option>
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="angry">😡 Angry</option>
+        <option value="relaxed">😌 Relaxed</option>
+    </select>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
