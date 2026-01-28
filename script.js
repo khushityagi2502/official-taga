@@ -1,28 +1,18 @@
-function signup() {
-  let user = document.getElementById("suUser").value;
-  let pass = document.getElementById("suPass").value;
+function login() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+  let msg = document.getElementById("msg");
 
   if (user === "" || pass === "") {
-    document.getElementById("msg").innerText = "Fill all fields!";
+    msg.innerText = "❌ Please fill all fields";
     return;
   }
 
-  localStorage.setItem("username", user);
-  localStorage.setItem("password", pass);
-
-  document.getElementById("msg").innerText = "Signup successful ✅";
-}
-
-function login() {
-  let user = document.getElementById("liUser").value;
-  let pass = document.getElementById("liPass").value;
-
-  let savedUser = localStorage.getItem("username");
-  let savedPass = localStorage.getItem("password");
-
-  if (user === savedUser && pass === savedPass) {
-    document.getElementById("msg").innerText = "Login successful 🎉";
-  } else {
-    document.getElementById("msg").innerText = "Wrong username or password ❌";
+  if (pass.length < 6) {
+    msg.innerText = "❌ Password must be 6 characters";
+    return;
   }
+
+  msg.style.color = "green";
+  msg.innerText = "✅ Login Successful!";
 }
