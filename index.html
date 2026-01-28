@@ -104,13 +104,123 @@
         }
     </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .card {
+            background: #f2f2f2;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
 
-    <h1>Welcome to Your Website</h1>
-    <div id="userMessage"></div>
+    <h1>Welcome <span id="greeting">👋</span></h1>
+    <p id="timeGreeting"></p>
+
+    <div class="card">
+        <h3>👤 Profile</h3>
+        <p><strong>Username:</strong> <span id="username">User</span></p>
+        <p><strong>Status:</strong> Active</p>
+        <p><strong>Role:</strong> Student</p>
+    </div>
+
+    <div class="card">
+        <h3>🎨 Mood Selector</h3>
+        <select id="mood">
+            <option value="">--Choose Mood--</option>
+            <option value="happy">😊 Happy</option>
+            <option value="sad">😢 Sad</option>
+            <option value="angry">😡 Angry</option>
+            <option value="relaxed">😌 Relaxed</option>
+        </select>
+    </div>
+
     <button id="logoutBtn">Logout</button>
 
     <script>
-        // Check if user is logged in
-        if (!localStorage.getItem("loggedIn"
+        // ====== Login check ======
+        if (!localStorage.getItem("loggedIn")) {
+            alert("You are not logged in!");
+            window.location.href = "login.html"; // Change if your login page name is different
+        }
+
+        // ====== Set username from localStorage (optional) ======
+        const username = localStorage.getItem("username") || "User";
+        document.getElementById("username").innerText = username;
+
+        // ====== Time-based greeting ======
+        const timeGreeting = document.getElementById("timeGreeting");
+        const now = new Date();
+        const hour = now.getHours();
+
+        if(hour >= 5 && hour < 12){
+            timeGreeting.textContent = "Good Morning! 🌞";
+        } else if(hour >= 12 && hour < 17){
+            timeGreeting.textContent = "Good Afternoon! 🌤️";
+        } else if(hour >= 17 && hour < 21){
+            timeGreeting.textContent = "Good Evening! 🌇";
+        } else {
+            timeGreeting.textContent = "Good Night! 🌙";
+        }
+
+        // ====== Mood selector ======
+        const moodSelector = document.getElementById("mood");
+        moodSelector.addEventListener("change", function() {
+            const mood = this.value;
+            if(mood === "happy"){
+                document.body.style.backgroundColor = "#fffb8f";
+                document.body.style.color = "#333";
+            } else if(mood === "sad"){
+                document.body.style.backgroundColor = "#a0c4ff";
+                document.body.style.color = "#fff";
+            } else if(mood === "angry"){
+                document.body.style.backgroundColor = "#ff6b6b";
+                document.body.style.color = "#fff";
+            } else if(mood === "relaxed"){
+                document.body.style.backgroundColor = "#caffbf";
+                document.body.style.color = "#333";
+            } else {
+                document.body.style.backgroundColor = "#fff";
+                document.body.style.color = "#000";
+            }
+        });
+
+        // ====== Logout button ======
+        const logoutBtn = document.getElementById("logoutBtn");
+        logoutBtn.addEventListener("click", function() {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("username"); // Optional if you store username
+            alert("You have been logged out!");
+            window.location.href = "login.html"; // Redirect to login page
+        });
+    </script>
+
+</body>
+</html>
+
 
